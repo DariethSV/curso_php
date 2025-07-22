@@ -6,13 +6,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO usuarios (nombre) VALUES ('$nombre')";
 
     if ($conexion->query($sql) === TRUE) {
-        echo "Nombre guardado correctamente.";
-        header("Location: form.html");
-        exit();
-exit();
+        echo "<h2>✔ Nombre guardado correctamente.</h2>";
     } else {
-        echo "Error: " . $conexion->error;
+        echo "<h2 style='color: red;'>Error al guardar el nombre: " . $conexion->error . "</h2>";
     }
 }
+$conexion->close();
 ?>
 
+<br>
+<a href="form.html">
+    <button>Volver al formulario</button>
+</a>
